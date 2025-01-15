@@ -1,48 +1,48 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [fullname, setFullname] = useState("");
-  const [error, setError] = useState("");
+  // State for inputs and output
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
 
+  // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (firstname.trim() === "" || lastname.trim() === "") {
-      setError(true);
-      return;
+    if (firstName && lastName) {
+      setFullName(`${firstName} ${lastName}`);
     }
-    setFullname(`${firstname} ${lastname}`);
-    setError(false);
   };
+
   return (
-    <div>
-      <h1>Full Name Display</h1>
+    <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>Enter Your Details</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="fname">
-          First Name :
+        <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="first-name">First Name: </label>
           <input
             type="text"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          ></input>
-        </label>
-        <br></br>
-        <label htmlFor="lname">
-          Last Name :
+            id="first-name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="last-name">Last Name: </label>
           <input
             type="text"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          ></input>
-        </label>
-        <br></br>
-        <button>Submit</button>
+            id="last-name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Submit</button>
       </form>
-      {error && <div>Please fill out both fields!</div>}
-      {fullname && (
-        <div>
-          <h2>Full Name: {fullname}</h2>
+      {fullName && (
+        <div id="output" style={{ marginTop: "20px", fontSize: "1.5rem" }}>
+          Full Name: {fullName}
         </div>
       )}
     </div>
