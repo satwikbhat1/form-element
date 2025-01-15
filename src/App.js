@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Enter Your Details</h1>
+      <h1>Full Name Display</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }}>
           <label htmlFor="first-name">First Name: </label>
